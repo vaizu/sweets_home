@@ -1,8 +1,10 @@
 class Post < ApplicationRecord
   has_one_attached :post_image
   belongs_to :user
-  has_many :post_genre, dependent: :destroy
-  has_many :genre, through: :post_genre, dependent: :destroy
+  has_many :post_genres, dependent: :destroy
+  has_many :genres, through: :post_genre, dependent: :destroy
+
+  enum recipe_status: { レシピあり: 0, レシピなし: 1 }
 
   def get_post_image(width, height)
     unless post_image.attached?
