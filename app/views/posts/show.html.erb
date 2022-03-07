@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>投稿詳細</h1>
+  <div class="row pt-3">
+    <%= image_tag @post.get_post_image, size: "500x300" %>
+  </div>
+  <div class="row">
+    <h1><%= @post.post_name %></h1>
+  </div>
+  <div class="row">
+    <h3>説明：<%= @post.post_introduction %></h3>
+  </div>
+  <div class="row d-flex align-items-end">
+    <%= image_tag @post.user.get_user_image, size: "auto" %>
+    <h5>ユーザーネーム：<%= @post.user.name %></h5>
+  </div>
+  <div class="row">
+    投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %>
+    <% if @post.user == current_user %>
+      <%= link_to "削除", post_path(@post), method: :delete %>
+    <% end %>
+  </div>
+  <%#レシピが存在する場合レシピリンク・レシピが存在しなくカレントユーザーの場合レシピ追加リンク %>
+  <div class="row">
+    <% if recipy_path(@post.id).empty? %>
+      <%= link_to "レシピ", recipy_path(@post.id) %>
+    <% elsif @post.user == current_user %>
+      <%= link_to "レシピ追加", new_recipy_path %>
+    <% end %>
+  </div>
+</div>

@@ -6,7 +6,7 @@ class Post < ApplicationRecord
 
   enum recipe_status: { レシピあり: 0, レシピなし: 1 }
 
-  def get_post_image(width, height)
+  def get_post_image
     unless post_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image1.jpg')
       post_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')

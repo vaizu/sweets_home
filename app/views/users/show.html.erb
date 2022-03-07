@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center">
 <div class="row col-10 pt-5">
   <div class="col-3">
-  <%= image_tag @user.get_user_image(100,100) %>
+  <%= image_tag @user.get_user_image, size: "100x200" %>
   <% if @user == current_user %>
     <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
   <% end %>
