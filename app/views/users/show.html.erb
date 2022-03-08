@@ -1,21 +1,23 @@
 <div class="d-flex justify-content-center">
-<div class="row col-10 pt-5">
-  <div class="col-3">
-  <%= image_tag @user.get_user_image, size: "100x200" %>
-  <% if @user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
+  <div class="row col-10 pt-5">
+    <div class="col-3">
+      <%= image_tag @user.get_user_image, size: "200x200" %>
+      <% if @user == current_user %>
+        <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+      <% end %>
+    </div>
+
+    <div class="col-6">
+      <h3><%= @user.name %></h3>
+      <%= @user.introduction %>
+    </div>
+
+    <div class="col-3">
+      <p>フォロー数</p>
+      <p>フォロワー数</p>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    </div>
   </div>
-  <div class="col-6">
-  <h3><%= @user.name %></h3>
-  <%= @user.introduction %>
-  </div>
-  <div class="col-3">
-  <p>フォロー数</p>
-  <p>フォロワー数</p>
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-  </div>
-</div>
 </div>
 
-<%= render 'posts/list', post_images: @posts %>
+<%= render 'posts/list', posts: @posts %>

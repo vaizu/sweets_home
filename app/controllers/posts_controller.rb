@@ -6,6 +6,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    #@genre = @post.post_genre
+  end
+
+  def index
+    @posts = Post.page(params[:page])
   end
 
   def create
@@ -18,6 +23,12 @@ class PostsController < ApplicationController
     else
       # error
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to '/posts'
   end
 
   private
