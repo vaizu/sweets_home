@@ -17,29 +17,42 @@
               <% end %>
             </p>
           </div>
+
           <div class="col-2">
-            <h5>いいね</h5>
+            <%#いいね機能%>
+            <% if post.favorited?(current_user) %>
+            <%#すでにいいねしている場合%>
+              <%= link_to post_favorites_path(post.id), method: :delete do %>
+                <h1>♥</h1>
+                <%= post.favorites.count %> いいね
+              <% end %>
+            <% else %>
+            <%#いいねしていない場合%>
+              <%= link_to post_favorites_path(post.id), method: :post do %>
+                <h1>♡</h1>
+                <%= post.favorites.count %> いいね
+              <% end %>
+            <% end %>
           </div>
-        </div>
 
-        <div class="row mt-2">
-          <div class="col-2"></div>
-          <div class="col-3">
-            <%= post.recipe_status %>
+          <div class="row mt-2">
+            <div class="col-2"></div>
+            <div class="col-3">
+              <%= post.recipe_status %>
+            </div>
+            <div class="col-3">
+              製作時間<%= post.cooking_time %>分
+            </div>
+            <div class="col-3">
+              製作金額<%= post.cooking_cost %>円
+            </div>
           </div>
-          <div class="col-3">
-            製作時間<%= post.cooking_time %>分
-          </div>
-          <div class="col-3">
-            製作金額<%= post.cooking_cost %>円
-          </div>
-        </div>
 
-        <div class="row">
-          <% post.genres.each do |genre| %>
-          <h3><%= genre.genre_name %></h3>
-          <% end %>
-        </div>
+          <div class="row">
+            <% post.genres.each do |genre| %>
+            <h3><%= genre.genre_name %></h3>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

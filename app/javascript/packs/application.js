@@ -15,10 +15,8 @@ import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 
 require('jquery')
-//= require rails-ujs
-//= require turbolinks
-//= require_tree .
-//= require cocoon
+
+require("@nathanvda/cocoon")
 
 Rails.start()
 Turbolinks.start()

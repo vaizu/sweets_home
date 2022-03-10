@@ -7,6 +7,22 @@
   <div class="row">
     <h1><%= @post.post_name %></h1>
   </div>
+  <%#いいね機能%>
+  <div>
+    <% if @post.favorited?(current_user) %>
+    <%#すでにいいねしている場合%>
+    <%= link_to post_favorites_path(@post.id), method: :delete do %>
+        <h4>♥</h4>
+        <%= @post.favorites.count %> いいね
+    <% end %>
+<% else %>
+    <%#いいねしていない場合%>
+    <%= link_to post_favorites_path(@post.id), method: :post do %>
+        <h4>♡︎</h4>
+        <%= @post.favorites.count %> いいね
+    <% end %>
+<% end %>
+  </div>
 
   <div class="row">
     <h3>説明：<%= @post.post_introduction %></h3>
@@ -39,13 +55,15 @@
       <%= link_to "削除", post_path(@post), method: :delete %>
     <% end %>
   </div>
-
+aaa<%= @post.recipe_status_before_type_cast %>bbb
   <%#レシピが存在する場合レシピリンク・レシピが存在しなくカレントユーザーの場合レシピ追加リンク %>
   <div class="row">
-    <% if recipy_path(@post.id).empty? %>
-      <%= link_to "レシピ", recipy_path(@post.id) %>
-    <% elsif @post.user == current_user %>
-      <%= link_to "レシピ追加", new_recipy_path %>
+    <% if @post.recipe_status_before_type_cast==0 %>
+      <%= link_to "レシピ", post_recipe_path(@post.id) %>
+    <% else %>
+      <% if  @post.user == current_user %>
+        <%= link_to "レシピ追加", new_post_recipe_path(@post.id) %>
+      <% end %>
     <% end %>
   </div>
 </div>

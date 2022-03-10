@@ -8,6 +8,7 @@ class User < ApplicationRecord
   #プロフィールイメージ
   has_one_attached :user_image
   has_many :posts, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   def get_user_image
     unless user_image.attached?

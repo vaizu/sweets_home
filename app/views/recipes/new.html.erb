@@ -1,0 +1,49 @@
+<h1>レシピ作成</h1>
+<div class="recipe-post">
+  <%= form_with(model: @post,url: post_recipes_path, method: :post, local: true) do |f| %>
+
+    <div class="recipe-ingredients">
+      <div class="mx-auto">
+        <%= f.fields_for :meterials do |t| %>
+          <%= render "meterial_fields", f: t %>
+        <% end %>
+      </div>
+
+      <div id="detail-association-insertion-point"></div>
+
+      <div class="col-10 mx-auto mt-2">
+        <%= link_to_add_association "フォームを追加", f, :meterials,
+        class: "btn btn-secondary btn-block",
+        data: {
+        association_insertion_node: '#detail-association-insertion-point',
+        association_insertion_method: 'after'
+        }%>
+      </div>
+    </div>
+
+    <%#レシピ手順追加フォーム%>
+    <div class="recipe-ingredients">
+      <div class="mx-auto">
+        <%= f.fields_for :recipes do |t| %>
+          <%= render "recipe_fields", f: t %>
+        <% end %>
+      </div>
+
+      <div id="detail-association-insertion-point"></div>
+
+      <div class="col-10 mx-auto mt-2">
+        <%= link_to_add_association "フォームを追加", f, :recipes,
+        class: "btn btn-secondary btn-block",
+        data: {
+        association_insertion_node: '#detail-association-insertion-point',
+        association_insertion_method: 'after'
+        }%>
+      </div>
+    </div>
+    <div class="form-group col-12 mx-auto text-center">
+            <%= f.submit "投稿", class: "btn btn-success col-sm-2" %>
+          </div>
+
+
+  <% end %>
+</div>
