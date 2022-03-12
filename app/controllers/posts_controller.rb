@@ -24,6 +24,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @genre = @post.post_genre_ids
+    @comment = Comment.new
   end
 
   def index
