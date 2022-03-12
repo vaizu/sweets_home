@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   resources :posts, only: [:new,:create,:index,:show,:edit,:update,:destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
+    resources :recipes, only: [:new,:show,:edit,:update,:create]
   end
 
-  resources :recipies, only: [:new,:show,:edit,:update]
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

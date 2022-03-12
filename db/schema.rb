@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_05_130313) do
+ActiveRecord::Schema.define(version: 2022_03_09_112141) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(version: 2022_03_05_130313) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "meterials", force: :cascade do |t|
+    t.integer "post_id"
+    t.string "meterial_name"
+    t.string "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "post_genres", force: :cascade do |t|
     t.integer "post_id"
     t.integer "genre_id"
@@ -83,7 +91,6 @@ ActiveRecord::Schema.define(version: 2022_03_05_130313) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "post_id"
-    t.string "meterial"
     t.text "recipe"
   end
 

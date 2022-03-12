@@ -1,0 +1,31 @@
+<div class="card-list-container">
+<h1>レシピ</h1>
+<% if  @post.user == current_user %>
+        <%= link_to "レシピ編集", edit_post_recipe_path(@post.id) %>
+      <% end %>
+<h1>材料</h1>
+<div class="card w-50 p-2 shadow-lg mt-2">
+  <% @post.meterials.each do |post| %>
+    <h3>
+      <%= post.meterial_name %>
+      <%= post.quantity %>
+    </h3>
+  <% end %>
+</div>
+<h1 class="mt-3">レシピ手順</h1>
+<div class="col-12">
+  <% @post.recipes.each do |post| %>
+    <h3  class="card w-50 p-2 shadow-lg mt-2 col-12">
+      <div class="col-1">
+      <%= @sum += 1 %>
+      </div>
+      <div class="col-8">
+      <%= post.recipe %>
+      </div>
+      <div class="col-3">
+      <%= image_tag post.get_recipe_image, size: "100x100" %>
+      </div>
+    </h3>
+  <% end %>
+</div>
+</div>
