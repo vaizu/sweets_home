@@ -45,7 +45,9 @@
 
   <div class="row d-flex align-items-end">
     <%= image_tag @post.user.get_user_image, size: "auto" %>
-    <h5>ユーザーネーム：<%= @post.user.name %></h5>
+    <h5>ユーザーネーム：<%= @post.user.name %>
+    <%= link_to "ユーザー詳細", user_path(@post.user.id) %>
+    </h5>
     <%#カレントユーザーの場合編集リンク表示%>
     <% if @post.user == current_user %>
         <h5 class="ml-4"><%= link_to "投稿編集", edit_post_path(@post) %></h5>
