@@ -29,6 +29,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page])
+    @genres = Genre.all
   end
 
   def edit
