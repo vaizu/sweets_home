@@ -1,1 +1,10 @@
-<%= render 'list', posts: @posts, post_genre: @post_genre %>
+<div class="row">
+  <div class="col-12">
+    <%= render "genres/genre", genres: @genres %>
+  </div>
+ </div>
+ <div class="row">
+  <div class="col-12">
+    <%= render 'list', posts: @posts, post_genre: @post_genre %>
+  </div>
+</div>
