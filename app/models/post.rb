@@ -11,10 +11,12 @@ class Post < ApplicationRecord
 
   enum recipe_status: { レシピあり: 0, レシピなし: 1 }
 
+  #いいね
   def favorited?(user)
      favorites.where(user_id: user.id).exists?
   end
 
+  #投稿画像
   def get_post_image
     unless post_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image1.jpg')

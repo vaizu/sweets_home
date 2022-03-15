@@ -12,7 +12,10 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     resources :recipes, only: [:new,:show,:edit,:update,:create]
   end
-  
+
+  get 'search' => 'posts#search'
+
+
   resources :genres, only: [:show]
 
 

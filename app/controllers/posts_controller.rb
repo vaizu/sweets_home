@@ -28,9 +28,11 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page])
+    @posts = Post.page(params[:page]).per(8)
     @genres = Genre.all
+    @posts = @posts.where('post_name LIKE?', "%#{params[:search]}%") if params[:search].present?
   end
+
 
   def edit
     @post = Post.find(params[:id])
