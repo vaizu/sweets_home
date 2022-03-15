@@ -1,10 +1,13 @@
 class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
-    comment = current_user.comments.new(comment_params)
-    comment.post_id = @post.id
-    comment.save
-    redirect_to post_path(@post)
+    @comment = @post.comments.new(comment_params)
+    @comment.user_id = current_user.id
+    @comment_post = @comment.post
+    if @comment.save
+      @comment_post.create_notification_comment!(current_user, @comment.id)
+      redirect_to request.referrer
+    end
   end
 
 

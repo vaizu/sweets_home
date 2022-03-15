@@ -5,6 +5,12 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    resources :notifications, only: :index do
+      collection do
+        delete :destroy_all
+      end
+    end
+
   end
 
   resources :posts, only: [:new,:create,:index,:show,:edit,:update,:destroy] do
@@ -17,6 +23,7 @@ Rails.application.routes.draw do
 
 
   resources :genres, only: [:show]
+
 
 
 
