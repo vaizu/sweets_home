@@ -10,6 +10,14 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
+                <li>
+                  <div class="row ml-0">
+                  <%= link_to "お知らせ", user_notifications_path(current_user.id), class: 'nav-link text-dark' %>
+                  <% if unchecked_notifications.any? %>
+                    <div class="fa fa-circle mt-2 ml-2 pt-1" style="color: gold;"></div>
+                  </div>
+                  <% end %>
+                </li>
                 <li class="nav-item">
                   <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
                 </li>
