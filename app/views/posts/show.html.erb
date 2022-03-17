@@ -51,13 +51,18 @@
   </div>
 
   <div class="row">
-    <h3>説明：<%= @post.post_introduction %></h3>
+    <h3>説明</h3>
+  </div>
+  <div>
+    <h3><%= @post.post_introduction %></h3>
   </div>
 
   <div class="row">
-    タグ
+    <h3>ジャンル</h3>
+  </div>
+  <div class="row">
     <% @post.genres.each do |genre| %>
-    <h3><%= genre.genre_name %></h3>
+    <p class="border border-5 ml-3 bg-light"><%= genre.genre_name %></p>
     <% end %>
   </div>
 
@@ -65,7 +70,7 @@
     <h5 class="mr-4">製作時間：<%= @post.cooking_time %>分</h5>
     <h5 class="ml-4">製作金額：<%= @post.cooking_cost %>円</h5>
   </div>
-  
+
   <%#レシピが存在する場合レシピリンク・レシピが存在しなくカレントユーザーの場合レシピ追加リンク %>
   <div class="row">
     <% if @post.recipe_status_before_type_cast==0 %>

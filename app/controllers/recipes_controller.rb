@@ -70,7 +70,12 @@ class RecipesController < ApplicationController
         #アップデート
         if value["_destroy"] == "false"
           m = Recipe.find(value["id"])
-          m.update!(recipe: value[:recipe], recipe_image: value[:recipe_image])
+          #byebug
+          if value[:recipe_image].nil?
+            m.update!(recipe: value[:recipe])
+          else
+            m.update!(recipe: value[:recipe], recipe_image: value[:recipe_image])
+          end
         #削除ボタンを押された場合データ削除
         elsif value["_destroy"] == "1"
           Recipe.find(value["id"]).destroy!

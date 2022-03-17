@@ -2,10 +2,27 @@
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 .font{
-  font-size:13px;
+  font-size:18px;
+}
+
+.font1{
+  font-size:30px;
 }
 
 body{
   background-color:#FFFFDF;
+  font-family: "HG丸ｺﾞｼｯｸM-PRO";
+  font-weight:900;
+}
+
+.top-font{
+  font-family: "HG丸ｺﾞｼｯｸM-PRO";
+  font-weight:900;
+  -webkit-text-stroke: 2px black;
+}
+
+.index-img{
+  height: 280px;
+  object-fit:contain;
 }
 

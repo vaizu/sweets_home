@@ -3,7 +3,7 @@
     <div class="row ml-4">
       <% genres.each do |genre| %>
         <%= link_to genre_path(genre.id) do %>
-          <p class="ml-4"><%= genre.genre_name %></p>
+          <p class="border border-5 ml-3 bg-light"><%= genre.genre_name %></p>
         <% end %>
       <% end %>
     </div>

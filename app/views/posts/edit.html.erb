@@ -1,12 +1,12 @@
-<div class='container'>
-  <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-  		<h1>投稿編集</h1>
-  	</div>
+<div class="container">
+  <div class="row">
+    <div class="col-3 mb-5">
+      <h2 class="text-center bg-warning mt-5 ml-5 col-8">投稿編集</h2>
+    </div>
   </div>
 
   		<div class="row">
-    <div class="col-12 mb-5 offset-2">
+    <div class="col-10 mb-5 offset-2">
       <%= form_with model: @post, url: post_path, local: true do |f| %>
         <form>
           <div class="form-group col-xs-9">
@@ -22,16 +22,20 @@
             <%= f.text_area :post_introduction, placeholder: "ここに説明文を記述します", class: "col-sm-6 p-1", rows:"5" %>
           </div>
           <div class="form-group col-xs-9">
+            <div>
             <%= f.label :ジャンル, class: "col-sm-2" %>
-            <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :genre_name, class: "col-sm-5" %>
+            </div>
+            <div class="col-11 ml-5">
+            <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :genre_name %>
+            </div>
           </div>
           <div class="form-group col-xs-9">
-            <%= f.label :製作時間, class: "col-sm-2" %>
-            <%= f.text_field :cooking_time, placeholder: "00", class: "text-center col-1" %>分
+            <%= f.label :製作時間, class: "col-sm-3" %>
+            <%= f.text_field :cooking_time, placeholder: "00", class: "text-center col-1 ml-5" %>分
           </div>
           <div class="form-group col-xs-9">
-            <%= f.label :製作金額, class: "col-sm-2" %>
-            <%= f.text_field :cooking_cost, placeholder: "00", class: "text-center col-1" %>円
+            <%= f.label :製作金額, class: "col-sm-3" %>
+            <%= f.text_field :cooking_cost, placeholder: "00", class: "text-center col-1 ml-5" %>円
           </div>
           <div class="form-group col-xs-9">
               <%= f.label :レシピの有無, class: "col-sm-2" %>
