@@ -13,12 +13,16 @@
       <% end %>
     </div>
 
-    <div class="col-6">
+    <div class="col-6 mt-5">
+      <p class="mb-0">ユーザー名</p>
       <h3><%= @user.name %></h3>
+      <p class="mb-0 mt-4">紹介</p>
+      <h5>
       <%= @user.introduction %>
+      </h5>
     </div>
 
-    <div class="col-3">
+    <div class="col-3 mt-5">
       <p>
         フォロー数
         <%= link_to user_followings_path(@user.id) do %>
@@ -34,7 +38,7 @@
       <% if @user == current_user %>
       <p class="btn btn-primary ">
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'text-light' %>
-      </p>
+      </p></br>
       <p class="btn btn-primary">
       <%= link_to "お知らせ", user_notifications_path(current_user.id), class: 'text-light' %>
       <% if unchecked_notifications.any? %>
