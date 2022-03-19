@@ -10,20 +10,24 @@ class RecipesController < ApplicationController
       #材料
       recipe_params[:meterials_attributes].each do |k,value|
         if value["_destroy"] == "false"
-          @post.meterials.create(meterial_name: value[:meterial_name], quantity: value[:quantity])
+          if @post.meterials.create(meterial_name: value[:meterial_name], quantity: value[:quantity])
+          else
+            render :new
+          end
         end
       end
       #レシピ手順
       recipe_params[:recipes_attributes].each do |k,value|
-        if value["_destroy"] == "false"
-          @post.recipes.create(recipe: value[:recipe], recipe_image: value[:recipe_image])
+        if value["_destroy"] == "false" && value[:recipe].present?
+          if @post.recipes.create(recipe: value[:recipe], recipe_image: value[:recipe_image])
+          else
+            render :new
+          end
         end
       end
-      @post.recipe_status = 0
-      redirect_to post_path(@post.id)
-    #else
-      #render :new
-    #end
+    @post.recipe_status = 0
+    @post.save
+    redirect_to post_path(@post.id)
   end
 
   def show
@@ -46,46 +50,55 @@ class RecipesController < ApplicationController
         # IDが存在しない場合新しく作成
         unless Meterial.exists?(value["id"])
           if value["_destroy"] == "false"
-            material = @post.meterials.create(meterial_name: value[:meterial_name], quantity: value[:quantity])
-            value["id"] = material.id
+            if material = @post.meterials.create(meterial_name: value[:meterial_name], quantity: value[:quantity])
+              value["id"] = material.id
+            else
+              render :edit
           end
-        end
-        #アップデート
-        if value["_destroy"] == "false"
-          m = Meterial.find(value["id"])
-          m.update!(meterial_name: value[:meterial_name], quantity: value[:quantity])
-          #削除ボタンを押された場合データ削除
-        elsif value["_destroy"] == "1"
-          Meterial.find(value["id"]).destroy!
         end
       end
-      #レシピ手順
-      recipe_params[:recipes_attributes].each do |k,value|
-        # IDが存在しない場合新しく作成
-        unless Recipe.exists?(value["id"])
-          if value["_destroy"] == "false"
-            recipe = @post.recipes.create(recipe: value[:recipe], recipe_image: value[:recipe_image])
-            value["id"] = recipe.id
-          end
+      #アップデート
+      if value["_destroy"] == "false"
+        m = Meterial.find(value["id"])
+        if m.update!(meterial_name: value[:meterial_name], quantity: value[:quantity])
+        else
+          render :edit
         end
-        #アップデート
-        if value["_destroy"] == "false"
-          m = Recipe.find(value["id"])
-          #byebug
-          if value[:recipe_image].nil?
-            m.update!(recipe: value[:recipe])
-          else
-            m.update!(recipe: value[:recipe], recipe_image: value[:recipe_image])
-          end
         #削除ボタンを押された場合データ削除
-        elsif value["_destroy"] == "1"
-          Recipe.find(value["id"]).destroy!
+      elsif value["_destroy"] == "1"
+        Meterial.find(value["id"]).destroy!
+      end
+    end
+    #レシピ手順
+    recipe_params[:recipes_attributes].each do |k,value|
+      # IDが存在しない場合新しく作成
+      unless Recipe.exists?(value["id"])
+        if value["_destroy"] == "false"
+          if recipe = @post.recipes.create(recipe: value[:recipe], recipe_image: value[:recipe_image])
+            value["id"] = recipe.id
+          else
+            render :edit
+          end
         end
       end
-      redirect_to post_recipe_path(@post.id)
-    #else
-      #render :new
-    #end
+      #アップデート
+      if value["_destroy"] == "false"
+        m = Recipe.find(value["id"])
+        #byebug
+        if value[:recipe_image].nil?
+          if m.update!(recipe: value[:recipe])
+          else
+            render :edit
+          end
+        else
+          m.update!(recipe: value[:recipe], recipe_image: value[:recipe_image])
+        end
+      #削除ボタンを押された場合データ削除
+      elsif value["_destroy"] == "1"
+        Recipe.find(value["id"]).destroy!
+      end
+    end
+    redirect_to post_recipe_path(@post.id)
   end
 
 

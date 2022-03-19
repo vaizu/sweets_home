@@ -17,7 +17,7 @@ class PostsController < ApplicationController
       end
       redirect_to post_path(@post)
     else
-      # error
+      render "new"
     end
   end
 

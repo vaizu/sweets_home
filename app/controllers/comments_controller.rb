@@ -7,6 +7,8 @@ class CommentsController < ApplicationController
     if @comment.save
       @comment_post.create_notification_comment!(current_user, @comment.id)
       redirect_to request.referrer
+    else
+      redirect_to request.referrer
     end
   end
 

@@ -3,6 +3,14 @@
     <div class="col-5 mb-4">
       <h2 class="text-center bg-warning mt-5 ml-5 col-8">プロフィール編集</h2>
     </div>
+    <% if @user.errors.any? %>
+      <%= @user.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
   	<div class="row">
     <div class="col-10 mb-3 offset-2">

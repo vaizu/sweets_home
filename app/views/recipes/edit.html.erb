@@ -1,4 +1,12 @@
 <h1>レシピ編集</h1>
+<% if @recipe.errors.any? %>
+    <%= @recipe.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 <div class="recipe-post">
   <%= form_with(model: @post,url: post_recipe_path, method: :patch, local: true) do |f| %>
 
