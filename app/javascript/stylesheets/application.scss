@@ -26,6 +26,16 @@ body{
   object-fit:contain;
 }
 
+.user-img{
+  height: 100px;
+  width: 100px;
+  object-fit:cover;
+}
+.show-img{
+  background-color:light;
+  hightth: 600px;
+  object-fit:contain;
+}
 .pagination>li>a {
   border: none;
   color: #696969;

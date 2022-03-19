@@ -19,6 +19,7 @@ class RecipesController < ApplicationController
           @post.recipes.create(recipe: value[:recipe], recipe_image: value[:recipe_image])
         end
       end
+      @post.recipe_status = 0
       redirect_to post_path(@post.id)
     #else
       #render :new
