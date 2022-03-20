@@ -2,7 +2,9 @@ class Recipe < ApplicationRecord
   has_one_attached :recipe_image
   belongs_to :post
 
-  validates :recipe, presence: true
+  #validates :recipe, presence: true
+  validates_presence_of :recipe
+
 
   def get_recipe_image
     unless recipe_image.attached?
