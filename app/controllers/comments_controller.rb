@@ -6,14 +6,15 @@ class CommentsController < ApplicationController
     @comment_post = @comment.post
     if @comment.save
       @comment_post.create_notification_comment!(current_user, @comment.id)
-      redirect_to request.referrer
+    else
     end
   end
 
 
   def destroy
-    Comment.find(params[:id]).destroy
-    redirect_to post_path(params[:post_id])
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find_by(id: params[:id], post_id: params[:post_id])
+    @comment.destroy
   end
 
   private

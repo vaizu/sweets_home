@@ -12,6 +12,9 @@ class Post < ApplicationRecord
 
   enum recipe_status: { レシピあり: 0, レシピなし: 1 }
 
+  validates :post_name, presence: true
+  validates :post_image, presence: true
+
   #いいね
   def favorited?(user)
      favorites.where(user_id: user.id).exists?

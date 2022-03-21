@@ -2,12 +2,22 @@
 
   <div class="row">
     <div class="col-3 mb-5">
-      <h3 class="text-center bg-light mt-5 ml-5 col-8">新規投稿</h3>
+      <h2 class="text-center bg-warning mt-5 ml-5 col-8">新規投稿</h2>
     </div>
   </div>
 
+  <%#エラー文%>
+  <% if @post.errors.any? %>
+    <%= @post.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <div class="row">
-    <div class="col-12 mb-5 offset-2">
+    <div class="col-10 mb-5 offset-2">
       <%= form_with model: @post, url: posts_path, local: true do |f| %>
         <form>
           <div class="form-group col-xs-9">
@@ -23,25 +33,23 @@
             <%= f.text_area :post_introduction, placeholder: "ここに説明文を記述します", class: "col-sm-6 p-1", rows:"5" %>
           </div>
           <div class="form-group col-xs-9">
+            <div>
             <%= f.label :ジャンル, class: "col-sm-2" %>
-            <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :genre_name, class: "col-sm-5" %>
+            </div>
+            <div class="col-11 ml-5">
+            <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :genre_name %>
+            </div>
           </div>
           <div class="form-group col-xs-9">
-            <%= f.label :製作時間, class: "col-sm-2" %>
-            <%= f.text_field :cooking_time, placeholder: "00", class: "text-center col-1" %>分
+            <%= f.label :製作時間, class: "col-sm-3" %>
+            <%= f.text_field :cooking_time, placeholder: "00", class: "text-center col-1 ml-5" %>分
           </div>
           <div class="form-group col-xs-9">
-            <%= f.label :製作金額, class: "col-sm-2" %>
-            <%= f.text_field :cooking_cost, placeholder: "00", class: "text-center col-1" %>円
+            <%= f.label :製作金額, class: "col-sm-3" %>
+            <%= f.text_field :cooking_cost, placeholder: "00", class: "text-center col-1 ml-5" %>円
           </div>
-          <div class="form-group col-xs-9">
-              <%= f.label :レシピの有無, class: "col-sm-2" %>
-              <%= f.radio_button :recipe_status, :レシピあり, checked: "checked", class: "ml-5" %>
-              <%= f.label :recipe_status, "レシピあり" %>
-              <%= f.radio_button :recipe_status, :レシピなし, class: "ml-4" %>
-              <%= f.label :recipe_status, "レシピなし" %>
-          </div>
-          <div class="form-group col-12 mx-auto text-center">
+          <%= f.hidden_field :recipe_status, :value => "レシピなし" %>
+          <div class="form-group col-10 text-center">
             <%= f.submit "投稿", class: "btn btn-success col-sm-2" %>
           </div>
         </form>

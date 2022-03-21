@@ -1,10 +1,10 @@
   <div class="continer">
-    <div class="row">
-  <h5 class="ml-4">ジャンル検索</h5>
-    <% genres.each do |genre| %>
-      <%= link_to genre_path(genre.id) do %>
-        <p class="ml-4"><%= genre.genre_name %></p>
+    <h5 class="ml-4 mt-3">ジャンル検索</h5>
+    <div class="row ml-4">
+      <% genres.each do |genre| %>
+        <%= link_to genre_path(genre.id) do %>
+          <p class="border border-5 ml-3 bg-light"><%= genre.genre_name %></p>
+        <% end %>
       <% end %>
-    <% end %>
     </div>
   </div>

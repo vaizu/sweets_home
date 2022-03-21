@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center">
   <div class="row col-10 pt-5">
     <div class="col-3">
-      <%= image_tag @user.get_user_image, size: "200x200" %>
+      <%= image_tag @user.get_user_image, class: "user-img1" %>
       <% if @user == current_user %>
         <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
       <% else %>
@@ -13,12 +13,18 @@
       <% end %>
     </div>
 
-    <div class="col-6">
-      <h3><%= @user.name %></h3>
-      <%= @user.introduction %>
+    <div class="col-6 mt-5">
+      <p class="mb-0">ユーザー名</p>
+      <h3 style="background-color:rgba(255,255,255,0.6);">
+        <%= @user.name %>
+      </h3>
+      <p class="mb-0 mt-4">紹介</p>
+      <h5 class="text-break h-50", style="background-color:rgba(255,255,255,0.6);">
+      <%= @user.introduction%>
+      </h5>
     </div>
 
-    <div class="col-3">
+    <div class="col-3 mt-5">
       <p>
         フォロー数
         <%= link_to user_followings_path(@user.id) do %>
@@ -31,7 +37,17 @@
           <%= @user.followers.count %>
         <% end %>
       </p>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <% if @user == current_user %>
+      <p class="btn btn-primary">
+      <%= link_to "お知らせ", user_notifications_path(current_user.id), class: 'text-light' %>
+      <% if unchecked_notifications.any? %>
+        <div class="fa fa-circle mt-2 ml-2 pt-1" style="color: gold;"></div>
+      <% end %>
+      </p></br>
+      <p class="btn btn-primary ">
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'text-light' %>
+      </p>
+      <% end %>
     </div>
   </div>
 </div>

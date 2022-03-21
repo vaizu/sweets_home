@@ -1,2 +1,61 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.font{
+  font-size:18px;
+}
+
+.font1{
+  font-size:30px;
+}
+
+body{
+  background-color:#FFFFDF;
+  font-family: "HG丸ｺﾞｼｯｸM-PRO";
+  font-weight:900;
+}
+
+.top-font{
+  font-family: "HG丸ｺﾞｼｯｸM-PRO";
+  font-weight:900;
+  -webkit-text-stroke: 2px black;
+}
+
+.index-img{
+  height: 280px;
+  object-fit:contain;
+}
+
+.user-img{
+  height: 100px;
+  width: 100px;
+  object-fit:cover;
+}
+
+.user-img1{
+  height: 200px;
+  width: 200px;
+  object-fit:cover;
+}
+.show-img{
+  background-color:light;
+  hightth: 600px;
+  object-fit:contain;
+}
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+}
+
+.pagination {
+  justify-content: center;
+}

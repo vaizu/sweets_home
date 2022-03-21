@@ -22,6 +22,8 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
+  validates :name, presence: true
+
   #フォローする
   def follow(user_id)
     self.relationships.create!(followed_id: user_id)
@@ -41,7 +43,7 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image1.jpg')
       user_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    user_image.variant(resize_to_limit: [100, 100]).processed
+    user_image.variant(resize_to_limit: [300, 300]).processed
   end
 
   #フォロー時の通知

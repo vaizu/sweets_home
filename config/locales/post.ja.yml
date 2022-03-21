@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      post: 投稿
+    attributes:
+      post:
+        post_name: 名称
+        post_image: 投稿画像
+
+      meterials:
+        meterial_name: 材料
+        quantity: 分量
+      recipes:
+        recipe: 手順
