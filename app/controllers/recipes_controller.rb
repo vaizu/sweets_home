@@ -9,9 +9,9 @@ class RecipesController < ApplicationController
     @post = Post.find(params[:post_id])
     #byebug
     if @post.update(recipe_params)
-      redirect_to post_path(@post)
-       @post.recipe_status = 0
-       @post.save
+      @post.recipe_status = 0
+      @post.save
+      redirect_to post_path(@post.id)
     else
       render :new
     end
@@ -51,9 +51,8 @@ class RecipesController < ApplicationController
 
   def update
     @post = Post.find(params[:post_id])
-    #byebug
     if @post.update(recipe_params)
-      redirect_to post_path(@post)
+      redirect_to post_recipe_path(@post.id)
     else
       render :edit
     end
