@@ -22,3 +22,12 @@ require("@nathanvda/cocoon")
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+/*global $*/
+$(document).on('turbolinks:load', function() {
+  $('.slider').slick({
+    dots: true,
+        autoplay: true,
+        autoplaySpeed: 1500,
+  })
+});

@@ -1,7 +1,7 @@
 <div class="nested-fields">
   <div class="row mx-auto">
-    <div class="col-5"><%= f.text_field :recipe, class: "form-control", placeholder: "レシピ" %></div>
-    <div class="col-5"><%= f.file_field :recipe_image, accept: "image/*" %></div>
+    <div class="col-5"><%= f.text_area :recipe, class: "form-control", placeholder: "レシピ" %></div>
+    <div class="offset-1 col-3 d-flex align-items-center pr-0"><%= f.file_field :recipe_image, accept: "image/*" %></div>
     <div class="offset-1 col-1 px-0 w-auto">
       <%= link_to_remove_association "削除", f, class: "btn btn-secondary btn-block" %>
     </div>
