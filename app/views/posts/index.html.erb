@@ -1,9 +1,12 @@
+<div class="continer">
 <%#検索フォーム %>
 <div class="search-form">
   <%= form_with url: posts_path, method: :get, local: true do |f| %>
-    <h5 class="ml-4 mt-3">投稿検索</h5>
+    <h5 class="ml-4 mt-3 col-2 light">投稿検索</h5>
+    <div class="form-inline">
     <%= f.text_field :search, class:"ml-5" %>
     <%= f.submit "検索", name: nil %>
+    </div>
   <% end %>
 </div>
 </div>
@@ -18,3 +21,4 @@
     <%= render 'list', posts: @posts %>
   </div>
 </div>
+</di

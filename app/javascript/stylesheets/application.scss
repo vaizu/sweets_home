@@ -12,8 +12,30 @@
   font-size:30px;
 }
 
+.bg-1{
+  background-image: url("/assets/背景4");
+  background-size: cover;
+  height: 100vh;
+  background-color: rgba(255,255,255,0.5);
+  background-blend-mode:lighten;
+}
+.light{
+  background-color: rgba(255,255,255,0.5);
+  background-blend-mode:lighten;
+  text-align: center;
+}
+
+.light2{
+  background-color: rgba(255,255,255,0.5);
+  background-blend-mode:lighten;
+}
+
 body{
-  background-color:#FFFFDF;
+  background-image: url("/assets/背景5");
+  background-size: cover;
+  height: 100vh;
+  background-color: rgba(255,255,255,0.5);
+  background-blend-mode:lighten;
   font-family: "HG丸ｺﾞｼｯｸM-PRO";
   font-weight:900;
 }
