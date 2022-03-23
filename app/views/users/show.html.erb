@@ -1,6 +1,7 @@
 <div class="d-flex justify-content-center">
-  <div class="row col-10 pt-5">
-    <div class="col-3">
+  <div class="card w-100 light4 pb-5">
+  <div class="row col-12 pt-5">
+    <div class="col-3 pl-5">
       <%= image_tag @user.get_user_image, class: "user-img1" %>
       <% if @user == current_user %>
         <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
@@ -24,7 +25,7 @@
       </h5>
     </div>
 
-    <div class="col-3 mt-5">
+    <div class="col-3 mt-5 pl-5">
       <p>
         フォロー数
         <%= link_to user_followings_path(@user.id) do %>
@@ -50,6 +51,8 @@
       <% end %>
     </div>
   </div>
+  </div>
+</div>
 </div>
 
 <%= render 'posts/list', posts: @posts %>

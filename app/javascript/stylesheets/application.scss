@@ -30,6 +30,15 @@
   background-blend-mode:lighten;
 }
 
+.light3{
+  background-color: rgba(0,100,255,0.5);
+}
+
+.light4{
+  background-color: rgba(227,215,163,0.6);
+  background-blend-mode:lighten;
+}
+
 body{
   background-image: url("/assets/背景5");
   background-size: cover;
@@ -91,4 +100,10 @@ body{
 
 .pagination {
   justify-content: center;
+}
+
+.card-img-overlay{
+  padding: 0;
+  text-align: top;
+  font-weight: bold;
 }

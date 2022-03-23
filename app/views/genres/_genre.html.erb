@@ -2,7 +2,7 @@
     <div class="row ml-5 mr-5">
       <% genres.each do |genre| %>
         <%= link_to genre_path(genre.id) do %>
-          <p class="border border-5 ml-3 bg-light"><%= genre.genre_name %></p>
+          <p class="ml-3 badge badge-pill badge-primary light3"><%= genre.genre_name %></p>
         <% end %>
       <% end %>
     </div>

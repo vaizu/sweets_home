@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-3 mb-5">
-      <h2 class="text-center bg-warning mt-5 ml-5 col-8">投稿編集</h2>
+      <h2 class="text-center light2 mt-5 ml-5 col-8">投稿編集</h2>
     </div>
   </div>
+
+  <%#エラー文%>
   <% if @post.errors.any? %>
     <%= @post.errors.count %>件のエラーが発生しました
     <ul>
@@ -18,35 +20,35 @@
       <%= form_with model: @post, url: post_path, local: true do |f| %>
         <form>
           <div class="form-group col-xs-9">
-            <%= f.label :投稿画像, class: "col-sm-2" %>
+            <%= f.label :投稿画像, class: "col-sm-2 light" %>
             <%= f.file_field :post_image, accept: "image/*" %>
           </div>
           <div class="form-group col-xs-9">
-            <%= f.label :名称, class: "col-sm-2" %>
+            <%= f.label :名称, class: "col-sm-2 light" %>
             <%= f.text_field :post_name, placeholder: "名称", class: "col-sm-6 p-1" %>
           </div>
           <div class="form-group col-xs-9">
-            <%= f.label :紹介, class: "col-sm-2 align-top" %>
+            <%= f.label :紹介, class: "col-sm-2 align-top light" %>
             <%= f.text_area :post_introduction, placeholder: "ここに説明文を記述します", class: "col-sm-6 p-1", rows:"5" %>
           </div>
           <div class="form-group col-xs-9">
             <div>
-            <%= f.label :ジャンル, class: "col-sm-2" %>
+            <%= f.label :ジャンル, class: "col-sm-2 light" %>
             </div>
-            <div class="col-11 ml-5">
+            <div class="col-11 ml-5 light2">
             <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :genre_name %>
             </div>
           </div>
           <div class="form-group col-xs-9">
-            <%= f.label :製作時間, class: "col-sm-3" %>
+            <%= f.label :製作時間, class: "col-sm-3 light mr-3" %>
             <%= f.text_field :cooking_time, placeholder: "00", class: "text-center col-1 ml-5" %>分
           </div>
           <div class="form-group col-xs-9">
-            <%= f.label :製作金額, class: "col-sm-3" %>
+            <%= f.label :製作金額, class: "col-sm-3 light mr-3" %>
             <%= f.text_field :cooking_cost, placeholder: "00", class: "text-center col-1 ml-5" %>円
           </div>
           <div class="form-group col-xs-9">
-              <%= f.label :レシピの有無, class: "col-sm-2" %>
+              <%= f.label :レシピの有無, class: "col-sm-2 light" %>
               <%= f.radio_button :recipe_status, :レシピあり, checked: "checked", class: "ml-5" %>
               <%= f.label :recipe_status, "レシピあり" %>
               <%= f.radio_button :recipe_status, :レシピなし, class: "ml-4" %>
