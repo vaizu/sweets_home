@@ -7,16 +7,16 @@
     <div class="col-2"></div>
     <div class="col-8 card mx-auto p-2 light2">
       <div class="row d-flex align-items-end">
-    <div class="col-3">
-      <%= image_tag @post.user.get_user_image,  class:"user-img" %>
-    </div>
-    <div class="col-6">
-      <h4>name：<%= @post.user.name %></h4>
-    </div>
-    <div class="col-3">
-      <%= link_to "ユーザー詳細", user_path(@post.user.id) %>
-    </div>
-    </div>
+        <div class="col-3">
+          <%= image_tag @post.user.get_user_image,  class:"user-img" %>
+        </div>
+        <div class="col-6">
+          <h4>name：<%= @post.user.name %></h4>
+        </div>
+        <div class="col-3">
+          <%= link_to "ユーザー詳細", user_path(@post.user.id) %>
+        </div>
+      </div>
     </div>
     <div class="col-2"></div>
   </div>
@@ -26,88 +26,88 @@
     <div class="col-10 card mx-auto p-2 shadow-lg mt-5 w-90 border-radius: 300px light2">
       <%= image_tag @post.get_post_image, class:"show-img" %>
 
-  <div class="row mt-4">
-    <div class="col-3">
-      投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %>
-    </div>
-    <div class="col-6"></div>
-    <div class="col-3">
-      <%#いいね機能%>
-      <div id="favorite_btn_<%= @post.id %>">
-        <%= render 'favorites/favorite', post: @post %>
+      <div class="row mt-4">
+        <div class="col-3">
+          投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %>
+        </div>
+        <div class="col-6"></div>
+        <div class="col-3">
+          <%#いいね機能%>
+          <div id="favorite_btn_<%= @post.id %>">
+            <%= render 'favorites/favorite', post: @post %>
+          </div>
+          <p>コメント件数：<%= @post.comments.count %></p>
+        </div>
       </div>
-      <p>コメント件数：<%= @post.comments.count %></p>
-    </div>
-  </div>
 
-  <div class="row mt-4">
-    <div class="col-3"></div>
-    <h1 class="col-7 border-top border-bottom"><%= @post.post_name %></h1>
-    <div class="col-2 d-flex align-items-end">
-      <%#カレントユーザーの場合編集・削除リンク表示%>
-      <% if @post.user == current_user %>
-        <div class="ml-3">
-          <%= link_to "編集", edit_post_path(@post) %>
+      <div class="row mt-4">
+        <div class="col-3"></div>
+        <h1 class="col-7 border-top border-bottom"><%= @post.post_name %></h1>
+        <div class="col-2 d-flex align-items-end">
+          <%#カレントユーザーの場合編集・削除リンク表示%>
+          <% if @post.user == current_user %>
+            <div class="ml-3">
+              <%= link_to "編集", edit_post_path(@post) %>
+            </div>
+            <div class="ml-3">
+              <%= link_to "削除", post_path(@post), method: :delete %>
+            </div>
+          <% end %>
         </div>
-        <div class="ml-3">
-          <%= link_to "削除", post_path(@post), method: :delete %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+      </div>
 
-  <div class="row mt-4">
-    <div class="col-3"></div>
-    <h1 class="col-7">説明</h3>
-    <div class="col-2"></div>
-  </div>
+      <div class="row mt-4">
+        <div class="col-3"></div>
+        <h1 class="col-7">説明</h3>
+        <div class="col-2"></div>
+      </div>
 
-  <div class="row mt-1">
-    <div class="col-3"></div>
-    <h3 class="col-7 border-top border-bottom"><%= @post.post_introduction %></h3>
-    <div class="col-2"></div>
-  </div>
+      <div class="row mt-1">
+        <div class="col-3"></div>
+        <h3 class="col-7 border-top border-bottom"><%= @post.post_introduction %></h3>
+        <div class="col-2"></div>
+      </div>
 
-  <div class="row mt-4">
-    <div class="col-3"></div>
-    <h3 class="col-7">ジャンル</h3>
-    <div class="col-2"></div>
-  </div>
-  <div class="row mt-1">
-    <div class="col-3"></div>
-    <% @post.genres.each do |genre| %>
-      <%= link_to genre_path(genre.id) do %>
-        <p class="ml-3 badge badge-pill badge-primary light3"><%= genre.genre_name %></p>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="row mt-4">
-    <div class="col-3"></div>
-    <h5 class="col-3">製作時間：<%= @post.cooking_time %>分</h5>
-    <h5 class="col-3">製作金額：<%= @post.cooking_cost %>円</h5>
-    <h5 class="col-3">
-      <%#レシピが存在する場合レシピリンク・レシピが存在しなくカレントユーザーの場合レシピ追加リンク %>
-      <% if @post.recipe_status_before_type_cast==0 %>
-        <%= link_to "レシピ", post_recipe_path(@post.id) %>
-      <% else %>
-        <% if  @post.user == current_user %>
-          <%= link_to "レシピ追加", new_post_recipe_path(@post.id) %>
+      <div class="row mt-4">
+        <div class="col-3"></div>
+        <h3 class="col-7">ジャンル</h3>
+        <div class="col-2"></div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-3"></div>
+        <% @post.genres.each do |genre| %>
+          <%= link_to genre_path(genre.id) do %>
+            <p class="ml-3 badge badge-pill badge-primary light3"><%= genre.genre_name %></p>
+          <% end %>
         <% end %>
-      <% end %>
-    </h5>
-  </div>
-   </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-3"></div>
+        <h5 class="col-3">製作時間：<%= @post.cooking_time %>分</h5>
+        <h5 class="col-3">製作金額：<%= @post.cooking_cost %>円</h5>
+        <h5 class="col-3">
+          <%#レシピが存在する場合レシピリンク・レシピが存在しなくカレントユーザーの場合レシピ追加リンク %>
+          <% if @post.recipe_status_before_type_cast==0 %>
+            <%= link_to "レシピ", post_recipe_path(@post.id) %>
+          <% else %>
+            <% if  @post.user == current_user %>
+              <%= link_to "レシピ追加", new_post_recipe_path(@post.id) %>
+            <% end %>
+          <% end %>
+        </h5>
+      </div>
+    </div>
     <div class="col-1"></div>
   </div>
 
   <div class="row mt-4">
     <div class="col-1"></div>
     <div class="col-10">
-    <%= form_with model: [@post, @comment], local: false do |f| %>
-      <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class:"col-10" %>
-      <%= f.submit "送信する" %>
-    <% end %>
+      <%= form_with model: [@post, @comment], local: false do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class:"col-10" %>
+        <%= f.submit "送信する" %>
+      <% end %>
     </div>
     <div class="col-1"></div>
   </div>
@@ -115,12 +115,10 @@
   <div class="row">
     <div class="col-1"></div>
     <div class="col-10">
-    <div id="comment">
-      <%= render 'comments/comment', post: @post %>
-    </div>
+      <div id="comment">
+        <%= render 'comments/comment', post: @post %>
+      </div>
     </div>
     <div class="col-1"></div>
   </div>
-
-
 </div>

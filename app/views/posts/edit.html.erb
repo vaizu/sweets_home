@@ -33,10 +33,10 @@
           </div>
           <div class="form-group col-xs-9">
             <div>
-            <%= f.label :ジャンル, class: "col-sm-2 light" %>
+              <%= f.label :ジャンル, class: "col-sm-2 light" %>
             </div>
             <div class="col-11 ml-5 light2">
-            <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :genre_name %>
+              <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :genre_name %>
             </div>
           </div>
           <div class="form-group col-xs-9">
@@ -56,8 +56,8 @@
           </div>
           <div class="row">
             <div class="col-3"></div>
-          <div class="form-group col-8 mx-auto">
-            <%= f.submit "更新", class: "btn btn-success col-sm-2" %>
+            <div class="form-group col-8 mx-auto">
+              <%= f.submit "更新", class: "btn btn-success col-sm-2" %>
             </div>
           </div>
         </form>
