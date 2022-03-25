@@ -3,6 +3,11 @@ class RecipesController < ApplicationController
     @post = Post.find(params[:post_id])
     @recipe = @post.recipes.build
     @meterial = @post.meterials.build
+    if @post.user == current_user
+      render "new"
+    else
+      redirect_to post_path(@post.id)
+    end
   end
 
   def create
@@ -45,6 +50,11 @@ class RecipesController < ApplicationController
 
   def edit
     @post = Post.find(params[:post_id])
+    if @post.user == current_user
+      render "edit"
+    else
+      redirect_to post_recipe_path(@post.id)
+    end
     #@recipe = @post.recipes.build
     #@meterial = @post.meterials.build
   end

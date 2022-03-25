@@ -36,6 +36,11 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if @post.user == current_user
+      render "edit"
+    else
+      redirect_to post_path(@post.id)
+    end
   end
 
 

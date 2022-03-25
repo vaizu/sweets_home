@@ -36,7 +36,7 @@
           <div id="favorite_btn_<%= @post.id %>">
             <%= render 'favorites/favorite', post: @post %>
           </div>
-          <p>コメント件数：<%= @post.comments.count %></p>
+          <p>コメント<%= @post.comments.count %></p>
         </div>
       </div>
 
