@@ -23,6 +23,8 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   validates :name, presence: true
+  validates :email, presence: true
+  validates :password, presence: true
 
   #フォローする
   def follow(user_id)
