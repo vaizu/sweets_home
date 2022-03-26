@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <h1 class="pl-4 mt-3 light2">レシピ作成</h1>
+  </div>
+
+  <!--エラーメッセージ-->
+  <% if @post.errors.any? %>
+    <%= @post.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="recipe-post mt-5">
+    <%= form_with(model: @post,url: post_recipes_path, method: :post, local: true) do |f| %>
+      <div class="recipe-ingredients">
+        <div class="mx-auto">
+          <%= f.fields_for :meterials do |t| %>
+            <%= render "meterial_fields", f: t %>
+          <% end %>
+        </div>
+
+        <div id="detail-association-insertion-point"></div>
+
+        <div class="col-10 mx-auto mt-2">
+          <%= link_to_add_association "フォームを追加", f, :meterials,
+          class: "btn btn-secondary btn-block",
+          data: {
+          association_insertion_node: '#detail-association-insertion-point',
+          association_insertion_method: 'before'
+          }%>
+        </div>
+      </div>
+
+      <%#レシピ手順追加フォーム%>
+      <div class="recipe-ingredients mt-5">
+        <div class="mx-auto">
+          <%= f.fields_for :recipes do |t| %>
+            <%= render "recipe_fields", f: t %>
+          <% end %>
+        </div>
+
+        <div id="detail-association-insertion-point2"></div>
+
+        <div class="col-10 mx-auto mt-2">
+          <%= link_to_add_association "フォームを追加", f, :recipes,
+          class: "btn btn-secondary btn-block",
+          data: {
+          association_insertion_node: '#detail-association-insertion-point2',
+          association_insertion_method: 'before'
+          }%>
+        </div>
+      </div>
+      <div class="form-group col-12 mx-auto text-center">
+        <%= f.submit "投稿", class: "btn btn-success col-sm-2 mt-4" %>
+      </div>
+    <% end %>
+  </div>
+</div>

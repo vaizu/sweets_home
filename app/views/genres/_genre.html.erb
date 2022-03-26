@@ -1,0 +1,8 @@
+<h5 class="ml-4 mt-4 col-2 light">ジャンル検索</h5>
+<div class="row ml-5 mr-5">
+  <% genres.each do |genre| %>
+    <%= link_to genre_path(genre.id) do %>
+      <p class="ml-3 badge badge-pill badge-primary light3"><%= genre.genre_name %></p>
+    <% end %>
+  <% end %>
+</div>

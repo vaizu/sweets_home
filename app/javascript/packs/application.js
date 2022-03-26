@@ -11,15 +11,23 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
-import "../stylesheets/application"
+import "../stylesheets/application.scss"
 import '@fortawesome/fontawesome-free/js/all'
 
+
 require('jquery')
-//= require rails-ujs
-//= require turbolinks
-//= require_tree .
-//= require cocoon
+
+require("@nathanvda/cocoon")
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+/*global $*/
+$(document).on('turbolinks:load', function() {
+  $('.slider').slick({
+    dots: true,
+        autoplay: true,
+        autoplaySpeed: 1500,
+  })
+});

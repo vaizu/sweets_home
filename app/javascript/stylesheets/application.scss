@@ -1,2 +1,108 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import "slick-theme";
+@import "slick";
+
+
+.font{
+  font-size:18px;
+}
+
+.font1{
+  font-size:30px;
+}
+
+.bg-1{
+  background-image: url("/assets/背景4");
+  background-size: cover;
+  height: 100vh;
+  background-color: rgba(255,255,255,0.5);
+  background-blend-mode:lighten;
+}
+.light{
+  background-color: rgba(255,255,255,0.5);
+  background-blend-mode:lighten;
+  text-align: center;
+}
+
+.light2{
+  background-color: rgba(255,255,255,0.5);
+  background-blend-mode:lighten;
+}
+
+.light3{
+  background-color: rgba(0,100,255,0.5);
+}
+
+.light4{
+  background-color: rgba(227,215,163,0.6);
+  background-blend-mode:lighten;
+}
+
+body{
+  background-image: url("/assets/背景5");
+  background-size: cover;
+  height: 100vh;
+  background-color: rgba(255,255,255,0.5);
+  background-blend-mode:lighten;
+  font-family: 'Bangers', cursive;
+  font-weight:900;
+}
+
+.top-font{
+  font-family: 'IM Fell DW Pica SC', serif;
+  font-weight:900;
+}
+
+.index-img{
+  height: 280px;
+  object-fit:contain;
+}
+
+.user-img{
+  height: 100px;
+  width: 100px;
+  object-fit:cover;
+}
+
+.user-img1{
+  height: 200px;
+  width: 200px;
+  object-fit:cover;
+}
+.show-img{
+  background-color:light;
+  height: 600px;
+  object-fit:contain;
+}
+
+.recipe-img{
+  background-color:light;
+  height: 100px;
+  width: 100px;
+  object-fit:cover;
+}
+
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.card-img-overlay{
+  padding: 0;
+  text-align: top;
+  font-weight: bold;
+}

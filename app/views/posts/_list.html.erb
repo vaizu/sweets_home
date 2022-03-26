@@ -1,1 +1,59 @@
-<h1>List</h1>
+<div class="container py-2">
+  <div class="row">
+    <% posts.each do |post| %>
+      <div class="col-6">
+        <div class="card mx-auto p-4 shadow-lg mt-5 w-90 border-radius: 300px light">
+          <%= link_to post_path(post.id) do %>
+            <%= image_tag post.get_post_image, class:"card-img-top index-img" %>
+          <% end %>
+
+          <div class="card-body p-1 ">
+            <div class="row">
+              <div class="col-2">
+                <%= image_tag post.user.get_user_image, size: "50x50" %>
+                <%= post.user.name %>
+              </div>
+              <div class="col-8">
+                <p class="card-title">
+                  <%= link_to(post_path(post.id), class:"text-dark") do %>
+                    <div class="font1"><%= post.post_name %></div>
+                  <% end %>
+                </p>
+              </div>
+              <div class="col-2 pl-2 pr-0 mt-2">
+                <div id="favorite_btn_<%= post.id %>">
+                  <%= render 'favorites/favorite', post: post %>
+                </div>
+                <div><%= link_to "コメント#{post.comments.count}", post_path(post.id) %></div>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-4 font">
+                <%= post.recipe_status %>
+              </div>
+              <div class="col-4 font">
+                製作時間<%= post.cooking_time %>分
+              </div>
+              <div class="col-4 font">
+                製作金額<%= post.cooking_cost %>円
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <% post.genres.each do |genre| %>
+                <%= link_to genre_path(genre.id) do %>
+                  <p class="badge badge-pill badge-primary light3 ml-3"><%= genre.genre_name %></p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="mt-4">
+    <%= paginate posts %>
+  </div>
+</div>
+
