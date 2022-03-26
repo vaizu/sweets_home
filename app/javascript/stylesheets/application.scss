@@ -30,20 +30,28 @@
   background-blend-mode:lighten;
 }
 
+.light3{
+  background-color: rgba(0,100,255,0.5);
+}
+
+.light4{
+  background-color: rgba(227,215,163,0.6);
+  background-blend-mode:lighten;
+}
+
 body{
   background-image: url("/assets/背景5");
   background-size: cover;
   height: 100vh;
   background-color: rgba(255,255,255,0.5);
   background-blend-mode:lighten;
-  font-family: "HG丸ｺﾞｼｯｸM-PRO";
+  font-family: 'Bangers', cursive;
   font-weight:900;
 }
 
 .top-font{
-  font-family: "HG丸ｺﾞｼｯｸM-PRO";
+  font-family: 'IM Fell DW Pica SC', serif;
   font-weight:900;
-  -webkit-text-stroke: 2px black;
 }
 
 .index-img{
@@ -91,4 +99,10 @@ body{
 
 .pagination {
   justify-content: center;
+}
+
+.card-img-overlay{
+  padding: 0;
+  text-align: top;
+  font-weight: bold;
 }

@@ -1,6 +1,6 @@
 <%#いいね機能%>
 <% if post.favorited?(current_user) %>
-<%#すでにいいねしている場合%>
+  <%#すでにいいねしている場合%>
   <%= link_to post_favorites_path(post.id), method: :delete, remote: true, class: "favorite_btn" do %>
     いいね♥<%= post.favorites.count %>
   <% end %>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h1 class="pl-4 mt-3">レシピ作成</h1>
+    <h1 class="pl-4 mt-3 light2">レシピ作成</h1>
   </div>
 
   <!--エラーメッセージ-->
@@ -13,9 +13,8 @@
     </ul>
   <% end %>
 
-  <div class="recipe-post">
+  <div class="recipe-post mt-5">
     <%= form_with(model: @post,url: post_recipes_path, method: :post, local: true) do |f| %>
-
       <div class="recipe-ingredients">
         <div class="mx-auto">
           <%= f.fields_for :meterials do |t| %>
@@ -57,8 +56,6 @@
       <div class="form-group col-12 mx-auto text-center">
         <%= f.submit "投稿", class: "btn btn-success col-sm-2 mt-4" %>
       </div>
-
-
     <% end %>
   </div>
 </div>

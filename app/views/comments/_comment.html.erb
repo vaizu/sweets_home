@@ -1,18 +1,17 @@
-
-      <% post.comments.each do |comment| %>
-        <div class="row p-4 shadow-lg mt-5 bg-light">
-          <div class="col-3">
-            <%= image_tag comment.user.get_user_image, class:"user-img" %>
-            <p><%= comment.user.name %></p>
-            <p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
-          </div>
-          <h5 class= "col-7 mt-5 text-break h-50">
-            <%= comment.comment %>
-          </h5>
-          <div class="col-2 d-flex align-items-end">
-            <% if comment.user == current_user %>
-              <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true %>
-            <% end %>
-          </div>
-        </div>
+<% post.comments.each do |comment| %>
+  <div class="row p-4 shadow-lg mt-5 bg-light">
+    <div class="col-3">
+      <%= image_tag comment.user.get_user_image, class:"user-img" %>
+      <p><%= comment.user.name %></p>
+      <p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
+    </div>
+    <h5 class= "col-7 mt-5 text-break h-50">
+      <%= comment.comment %>
+    </h5>
+    <div class="col-2 d-flex align-items-end">
+      <% if comment.user == current_user %>
+        <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true %>
       <% end %>
+    </div>
+  </div>
+<% end %>
