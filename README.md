@@ -28,7 +28,12 @@
 お菓子を作りたい、作ったお菓子をほかの人にも見てもらいたいと思った時
 
 ## 設計書
-<...>
+ER図</br>
+https://app.diagrams.net/#G16e4kXCXvYjkaDhCC6ZxOSv6rDQ1gy7Qw</br>
+テーブル定義書</br>
+https://docs.google.com/spreadsheets/d/1V31zlA79hpGphxmqXgjJv8gC-CDc8rmkFtJzt2uNieg/edit?usp=sharing</br>
+アプリケーション設計書</br>
+https://docs.google.com/spreadsheets/d/11F8GpZ8BvcgqxG_-uZDayXmitln8ke70iPdPhTXNCVo/edit?usp=sharing</br>
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/10tWCrAc6UTb6EFqegOf6QIGwT9H5zhdRkm2DolWRgIE/edit?usp=sharing
