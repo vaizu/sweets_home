@@ -10,3 +10,11 @@ body{
   font-family: 'Bangers', cursive;
   font-weight:900;
 }
+
+.bg-1{
+  background-image: image-url("/assets/bg-img4.jpg");
+  background-size: cover;
+  height: 100vh;
+  background-color: rgba(255,255,255,0.5) !important;
+  background-blend-mode:lighten;
+}
