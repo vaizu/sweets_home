@@ -26,6 +26,8 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password, presence: true
 
+  before_save :attach_default_image, unless: :user_image_attached?
+
   #フォローする
   def follow(user_id)
     self.relationships.create!(followed_id: user_id)
@@ -41,10 +43,10 @@ class User < ApplicationRecord
 
   #プロフィールイメージ
   def get_user_image
-    unless user_image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image1.jpg')
-      user_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-    end
+    #unless user_image.attached?
+    # file_path = Rails.root.join('app/assets/images/no_image1.jpg')
+    #  user_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    #end
     user_image.variant(resize_to_limit: [300, 300]).processed
   end
 
@@ -58,5 +60,16 @@ class User < ApplicationRecord
       )
       notification.save if notification.valid?
     end
+  end
+
+  private
+
+  def user_image_attached?
+    user_image.attached?
+  end
+
+  def attach_default_image
+    file_path = Rails.root.join('app/assets/images/no_image1.jpg')
+    user_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
   end
 end
