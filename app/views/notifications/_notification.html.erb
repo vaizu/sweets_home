@@ -5,7 +5,7 @@
   <div class="row">
     <div class="d-flex align-items-end">
       <%= link_to user_path(notification.visiter) do %>
-        <%= image_tag notification.visiter.user_image, size: "50x50" %>
+        <%= image_tag notification.visiter.user_image, size: "50x50", class:"mr-4" %>
       <% end %>
       <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
     </div>

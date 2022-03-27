@@ -1,5 +1,5 @@
 <% post.comments.each do |comment| %>
-  <div class="row p-4 shadow-lg mt-5 light2 ">
+  <div class="row p-4 shadow-lg mt-5 light2">
     <div class="col-3">
       <%= image_tag comment.user.get_user_image, class:"user-img" %>
       <p><%= comment.user.name %></p>
