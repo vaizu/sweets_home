@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true
-  validates :password, presence: true
+  validates :password, presence: true, on: :create
 
   before_save :attach_default_image, unless: :user_image_attached?
 
