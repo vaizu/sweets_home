@@ -19,12 +19,12 @@
 
           <div class="field mt-2">
             <%= f.label :ニックネーム ,class:"light2" %><br>
-            <%= f.text_field :name, class:"col-6" %>
+            <%= f.text_field :name, class:"col-6 pl-2" %>
           </div>
 
           <div class="field mt-2">
             <%= f.label :メールアドレス ,class:"light2" %><br />
-            <%= f.email_field :email, autocomplete: "email", class:"col-6" %>
+            <%= f.email_field :email, autocomplete: "email", class:"col-6 pl-2" %>
           </div>
 
           <div class="field mt-2">
@@ -32,12 +32,12 @@
             <% if @minimum_password_length %>
               (<%= @minimum_password_length %> 文字以上)
             <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password", class:"col-6" %>
+            <%= f.password_field :password, autocomplete: "new-password", class:"col-6 pl-2" %>
           </div>
 
           <div class="field mt-2">
             <%= f.label :"パスワード(確認用)" ,class:"light2" %></br>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"col-6" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"col-6 pl-2" %>
           </div>
 
           <div class="actions text-center mt-3">

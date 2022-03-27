@@ -15,6 +15,8 @@ class Post < ApplicationRecord
   validates :post_name, presence: true
   validates :post_image, presence: true
 
+  before_save :attach_default_image, unless: :post_image_attached?
+
   #いいね
   def favorited?(user)
      favorites.where(user_id: user.id).exists?
@@ -22,10 +24,6 @@ class Post < ApplicationRecord
 
   #投稿画像
   def get_post_image
-    unless post_image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image1.jpg')
-      post_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-    end
     post_image.variant(resize_to_limit: [500, 500]).processed
   end
 
@@ -60,6 +58,17 @@ class Post < ApplicationRecord
       notification.checked = true
     end
     notification.save if notification.valid?
+  end
+
+  private
+
+  def post_image_attached?
+    post_image.attached?
+  end
+
+  def attach_default_image
+    file_path = Rails.root.join('app/assets/images/no_image1.jpg')
+    post_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
   end
 end
 

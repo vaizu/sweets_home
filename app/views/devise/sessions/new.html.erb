@@ -14,11 +14,11 @@
           <%= render "devise/shared/error_messages", resource: resource %>
           <div class="field mt-4">
             <%= f.label :メールアドレス ,class:"light2" %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-6 pl-0" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-6 pl-2" %>
           </div>
           <div class="field mt-4">
             <%= f.label :パスワード ,class:"light2" %><br />
-            <%= f.password_field :password, autocomplete: "current-password", class:"col-6 pl-0" %>
+            <%= f.password_field :password, autocomplete: "current-password", class:"col-6 pl-2" %>
           </div>
 
           <div class="actions mt-5 text-center">
