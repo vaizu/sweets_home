@@ -29,8 +29,8 @@ class Post < ApplicationRecord
       end
       post_image.variant(resize_to_limit: [500, 500]).processed
     rescue => e
-      pp "error ..."
-      pp e
+      logger.info "error ..."
+      logger.info e
     end
   end
 
