@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:new,:create,:index,:show,:edit,:update,:destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
-    resources :recipes, only: [:new,:show,:edit,:update,:create]
+    resources :recipes, only: [:new,:show,:edit,:update,:create,:destroy]
   end
 
   get 'search' => 'posts#search'

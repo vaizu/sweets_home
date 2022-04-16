@@ -4,7 +4,7 @@
   </div>
   <% if  @post.user == current_user %>
     <div class="row pl-4">
-      <%= link_to "レシピ編集", edit_post_recipe_path(@post.id) ,class:"light2" %>
+      <%= link_to "レシピ編集", edit_post_recipe_path(@post.id) ,class:"light2" %><br>
     </div>
   <% end %>
 
@@ -25,9 +25,11 @@
           </div>
         <% end %>
       </div>
+
       <div class="row mt-5">
         <h1 class="light2">レシピ手順</h1>
       </div>
+
       <% @post.recipes.each do |post| %>
         <div  class="card w-100 p-2 mt-4 light2">
           <div class="row">
